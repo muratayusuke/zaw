@@ -211,6 +211,6 @@ function select-action() {}; zle -N select-action
 filter-select -i
 bindkey -M filterselect '^i' select-action
 
-bindkey '^X;' zaw
+bindkey '^gz' zaw
 
 }
