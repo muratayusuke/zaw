@@ -8,8 +8,9 @@ function zaw-src-git-recent-branches () {
         : ${(A)cand_descriptions::=${${(f)${branches}}#refs/(remotes|heads|tags)/}}
     fi
 
-    actions=(zaw-src-git-recent-branches-checkout)
-    act_descriptions=("check out")
+    actions=(zaw-src-git-branches-checkout zaw-src-git-branches-merge zaw-src-git-branches-merge-no-ff zaw-src-git-branches-merge-to zaw-src-git-branches-reset zaw-src-git-branches-create zaw-src-git-branches-delete)
+    act_descriptions=("check out" "merge" "merge no ff" "merge to" "reset" "create new branch from..." "delete")
+    options=()
 }
 
 function zaw-src-git-recent-all-branches () {
@@ -20,8 +21,9 @@ function zaw-src-git-recent-all-branches () {
         : ${(A)cand_descriptions::=${${(f)${branches}}#refs/(remotes|heads|tags)/}}
     fi
 
-    actions=(zaw-src-git-recent-branches-checkout)
-    act_descriptions=("check out")
+    actions=(zaw-src-git-branches-checkout zaw-src-git-branches-merge zaw-src-git-branches-merge-no-ff zaw-src-git-branches-merge-to zaw-src-git-branches-reset zaw-src-git-branches-create zaw-src-git-branches-delete)
+    act_descriptions=("check out" "merge" "merge no ff" "merge to" "reset" "create new branch from..." "delete")
+    options=()
 }
 
 function zaw-src-git-recent-branches-checkout () {
