@@ -211,6 +211,8 @@ function select-action() {}; zle -N select-action
 filter-select -i
 bindkey -M filterselect '^i' select-action
 
-bindkey '^X;' zaw
+bindkey '^gz' zaw
+bindkey '^g^b' zaw-git-recent-all-branches
+bindkey '^g^h' zaw-history
 
 }
