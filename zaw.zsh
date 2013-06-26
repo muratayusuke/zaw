@@ -214,5 +214,6 @@ bindkey -M filterselect '^i' select-action
 bindkey '^gz' zaw
 bindkey '^g^b' zaw-git-recent-all-branches
 bindkey '^g^h' zaw-history
+bindkey '^gc' zaw-cdr
 
 }
