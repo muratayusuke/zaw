@@ -9,12 +9,14 @@ function zaw-src-git-recent-branches () {
     fi
 
     actions=( \
-        zaw-src-git-branches-simple-checkout \
         zaw-src-git-branches-checkout \
+        zaw-src-git-branches-simple-checkout \
         zaw-callback-append-to-buffer \
         zaw-src-git-branches-merge \
         zaw-src-git-branches-merge-rebase \
         zaw-src-git-branches-merge-no-ff \
+        zaw-src-git-branches-diff \
+        zaw-src-git-branches-diff-stat \
         zaw-src-git-branches-reset \
         zaw-src-git-branches-rebase \
         zaw-src-git-branches-rebase-interactive \
@@ -23,12 +25,14 @@ function zaw-src-git-recent-branches () {
         zaw-src-git-branches-delete \
         zaw-src-git-branches-delete-force)
     act_descriptions=(
-        "check out" \
         "check out locally" \
+        "check out" \
         "append to edit buffer" \
         "merge" \
         "merge rebase" \
         "merge no ff" \
+        "diff" \
+        "diff stat" \
         "reset" \
         "rebase" \
         "rebase interactive from..." \
@@ -48,12 +52,14 @@ function zaw-src-git-recent-all-branches () {
     fi
 
     actions=( \
-        zaw-src-git-branches-simple-checkout \
         zaw-src-git-branches-checkout \
+        zaw-src-git-branches-simple-checkout \
         zaw-callback-append-to-buffer \
         zaw-src-git-branches-merge \
         zaw-src-git-branches-merge-rebase \
         zaw-src-git-branches-merge-no-ff \
+        zaw-src-git-branches-diff \
+        zaw-src-git-branches-diff-stat \
         zaw-src-git-branches-reset \
         zaw-src-git-branches-rebase \
         zaw-src-git-branches-rebase-interactive \
@@ -62,12 +68,14 @@ function zaw-src-git-recent-all-branches () {
         zaw-src-git-branches-delete \
         zaw-src-git-branches-delete-force)
     act_descriptions=(
-        "check out" \
         "check out locally" \
+        "check out" \
         "append to edit buffer" \
         "merge" \
         "merge rebase" \
         "merge no ff" \
+        "diff" \
+        "diff stat" \
         "reset" \
         "rebase" \
         "rebase interactive from..." \
