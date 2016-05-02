@@ -22,7 +22,7 @@ function zaw-src-git-files-raw() {
 
 function zaw-src-git-files-classify-aux() {
     local -a as ms ds os
-    : ${(A)as::=${(0)"$(git ls-files $(git rev-parse --show-cdup) -z)"}}
+    : ${(A)as::=${(0)"$(git ls-files $(git rev-parse --show-cdup) -c -z -o --exclude-standard)"}}
     : ${(A)ms::=${(0)"$(git ls-files $(git rev-parse --show-cdup) -z -m)"}}
     if (( $#ms == 0 )) || (( $#ms == 1 )) &&  [[ -z "$ms" ]]; then
         candidates=($as)
@@ -44,7 +44,7 @@ function zaw-src-git-files-classify-aux() {
 }
 
 function zaw-src-git-files-legacy-aux() {
-    : ${(A)candidates::=${(0)"$(git ls-files $(git rev-parse --show-cdup) -z)"}}
+    : ${(A)candidates::=${(0)"$(git ls-files $(git rev-parse --show-cdup) -c -z -o --exclude-standard)"}}
     return 0
 }
 
