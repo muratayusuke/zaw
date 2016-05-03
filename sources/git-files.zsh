@@ -21,14 +21,10 @@ function zaw-src-git-files-raw() {
 }
 
 function zaw-src-git-files-classify-aux() {
-    local -a as ms ds os
+    local -a as ms cs ds os
     : ${(A)as::=${(0)"$(git ls-files $(git rev-parse --show-cdup) -z -c -o --exclude-standard)"}}
     : ${(A)ms::=${(0)"$(git ls-files $(git rev-parse --show-cdup) -z -m)"}}
     : ${(A)us::=${(0)"$(git ls-files $(git rev-parse --show-cdup) -z -o --exclude-standard)"}}
-    if (( $#ms == 0 )) || (( $#ms == 1 )) &&  [[ -z "$ms" ]]; then
-        candidates=($as)
-        return 0
-    fi
 
     if is-at-least 5.0.0 || [[ -n "${ZSH_PATCHLEVEL-}" ]] && \
        is-at-least 1.5637 "$ZSH_PATCHLEVEL"; then
@@ -38,11 +34,21 @@ function zaw-src-git-files-classify-aux() {
         os=(${as:#(${(~j.|.)ms})}) # TODO: too slower for large work tree
         os=(${os:#(${(~j.|.)us})}) # TODO: too slower for large work tree
     fi
-    candidates=($ms $us $os)
 
-    : ${(A)mds::=${ms/%/                   MODIFIED}}
-    : ${(A)uds::=${us/%/                   UNTRACKED}}
-    ds=($mds $uds $os)
+    cs=($os)
+    ds=($os)
+    if (( $#ms != 0 )) && (( $#ms != 1 )) || [[ ! -z "$ms" ]]; then
+        cs=($ms $cs)
+        : ${(A)mds::=${ms/%/                   MODIFIED}}
+        ds=($mds $ds)
+    fi
+    if (( $#us != 0 )) && (( $#us != 1 )) || [[ ! -z "$us" ]]; then
+        cs=($us $cs)
+        : ${(A)uds::=${us/%/                   UNTRACKED}}
+        ds=($uds $ds)
+    fi
+
+    candidates=($cs)
     cand_descriptions=($ds)
     return 0
 }
